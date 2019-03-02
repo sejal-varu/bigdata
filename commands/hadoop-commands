@@ -1,0 +1,73 @@
+    1  exit
+    2  su hduser
+    3  exit
+    4  ssh-keygen -t rsa -P ""
+    5  history
+    6  ls -l ~/.ssh
+    7  cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
+    8  ls -l ~/.ssh
+    9  ssh localhost
+   10  sudo apt-get remove openssh-server openssh-client
+   11  sudo apt-get install openssh-server openssh-client
+   12  ssh localhost
+   13  history
+   14  sudo gedit /etc/sysctl.conf 
+   15  sudo gedit /etc/hosts
+   16  exit
+   17  ls -l ~/
+   18  history
+   19  ls -l ~/
+   20  ls -ltr ~/
+   21  sudo chown -R hduser:hadoop ~/hadoop-2.7.6.tar.gz 
+   22  ls -ltr ~/
+   23  tar -xvzf ~/hadoop-2.7.6.tar.gz 
+   24  sudo tar -xvzf ~/hadoop-2.7.6.tar.gz 
+   25  ls -l ~/
+   26  pwd
+   27  cd /home/hduser/
+   28  tar -xvzf ~/hadoop-2.7.6.tar.gz 
+   29  ls -l
+   30  history
+   31  exit
+   32  sudo cp -R /usr/lib/jvm/java-8-oracle/ /home/hduser
+   33  cd ~/
+   34  ls -ltr
+   35  sudo chown -R hduser:hadoop ~/java-8-oracle/
+   36  pwd
+   37  mkdir -p hadoop/hadoop_tmp/hdfs/namenode
+   38  mkdir -p hadoop/hadoop_tmp/hdfs/
+   39  pwd
+   40  sudo gedit ~/.bashrc
+   41  historydatanode
+
+
+sudo gedit ~/.bashrc
+	export JAVA_HOME=/home/hduser/java-8-oracle
+	export HADOOP_HOME=/home/hduser/hadoop-2.7.6
+	export PATH=$PATH:$HADOOP_HOME/bin:$HADOOP_HOME/sbin:$JAVA_HOME/bin
+	export HADOOP_MAPRED_HOME=$HADOOP_HOME
+	export HADOOP_COMMON_HOME=$HADOOP_HOME
+	export HADOOP_HDFS_HOME=$HADOOP_HOME
+	export YARN_HOME=$HADOOP_HOME
+	export HADOOP_COMMON_LIB_NATIVE_DIR=$HADOOP_HOME/lib/native
+	export HADOOP_OPTS="-Djava.library.path=$HADOOP_HOME/lib"
+
+
+ sudo gedit /etc/sysctl.conf 
+	#disable ipv6
+	net.ipv6.conf.all.disable_ipv6 = 1
+	net.ipv6.conf.default.disable_ipv6 = 1
+	net.ipv6.conf.lo.disable_ipv6 = 1
+
+sudo gedit /etc/hosts
+	#fe00::0 ip6-localnet
+	#ff00::0 ip6-mcastprefix
+	#ff02::1 ip6-allnodes
+	#ff02::2 ip6-allrouters
+`
+
+
+
+
+
+

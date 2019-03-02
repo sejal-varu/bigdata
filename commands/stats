@@ -1,0 +1,89 @@
+Supervised ML
+: Regression (Price of house, weight of plant) Single output (continuous numeric variables)
+: CLassification (Yes/NO)
+
+
+Un supervised:
+Just analysis / grouping / (not intrested in orrect or predictive output) Just cluster or put together similar types 
+
+
+Semi supervised:
+Seggregate + outputs something
+(Un supervised) + (Supervised)
+
+
+Reinforcements
+Eg. CHess GO netfilx series
+Learn from experiences, self leariing, takes time to learn
+
+
+
+Statistics:
+Type -1 : Descriptive stats:
+Mean avegare value
+Median : Central tendancy
+Mode For categoriacal data
+
+Spreads:
+Percentile 25th 5th range
+Interquartile range
+outliers in data
+Box plot in graph basis of percentile
+Box plot relation with histogram
+Variance Std deviation
+Box and whiskers
+Skewed distribution
+
+
+co relation
+co releration co efficient
+co relation metrics heatmaps
+
+Spurious co relation examples
+
+
+Variables:
+Continous vraiables 
+- Can be any value betweeek 0 to infinite
+- Non negative
+Problen type : Regression
+
+Discreet variable:
+Eg. number of steps(1 2 3 4....infinite ) but cannot be 1.2(decimal) OR negative
+It has equal distance between each variable 2.2 2.4 2.6 is also discreet as 0.2 is equal distance
+Problen type: Depends on problem. Use regression problen and if outcomes is decimal can do ceil floor or round on those output
+
+Categorical variable:
+Eg State in India (restricted only to 29 states cannot be out of it)
+Can be discreet as 1 to 29
+Problen type: Classification
+
+Normal Disrtribution
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

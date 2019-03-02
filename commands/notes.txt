@@ -1,0 +1,60 @@
+Data structured and algorithm
+
+
+Basics : Algebra metrices vectors, probablity, linear regresssions, methamitacal derivation, algorithm, graph problems,
+
+
+chain rules statistics/metric factorization
+
+python:Learn pandas
+
+Rules to Solve business prblms
+basic maths
+loss function
+where shld b used
+where it shld not be used
+
+andrew cathview website, colah.github.io
+
+ISLR
+stanford element of statistical learning
+
+Anderej karpathy book
+danybrets wildML.com
+
+Oliver grisel dataschool.io
+caltech for ML
+DL deep learning anf neural netwrk by micheal
+
+CS30 / 305 stanfordd lectures
+
+
+podcasts :
+youen()EIAN goodfellows : the AI podcasts
+
+widdows book for geometry
+
+gitarczip.com ARCZIP
+leaning x nd y sheets.com
+
+themorningpaper newsletters
+
+
+
+Goto jupyter workspace folder
+type "jupyter notebook"
+
+Shortcuts:
+Ctrl+Enter to run things
+
+lecturenotes: Ctrl + A add cell above
+lecturenotes: Ctrl + B add cell below
+
+
+
+
+Anaconda command
+source ~/anaconda2/bin/activate root
+anaconda-navigator
+
+ 

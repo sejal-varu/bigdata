@@ -1,0 +1,8 @@
+int range in python -5 to 256
+
+'is' will allocates diffrent memory location for string with numbers and special characters
+
+in pythom we can use '+' to concatenate. NOTE: Only string can be concatenated. for appending int convert int ot string first using bif int() then append
+
+
+

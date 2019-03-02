@@ -1,0 +1,152 @@
+exit
+"exit"
+'exit()'
+exit()
+sc.parallelize([5,6,5,4,1,6,7,10,9,10])
+r1 = sc.parallelize([5,6,5,4,1,6,7,10,9,10])
+r1
+def squares(ele):
+	return ele * ele;
+l = [5,4,3,2,1]
+l
+map (squares, l)
+m = map (squares, l)
+for ele in m:
+	print(ele)
+def filterodd(ele):
+	return ele % 2 !=0
+f = filter(filterodd, l )
+for ele in f:
+	print(ele)
+f
+m
+f = filter(lambda ele : ele % 2 !=0, l)
+for ele in f :
+	print (f)
+for ele in f :
+	print (ele)
+f
+for ele in f :
+	print(ele)
+l
+t
+t = [5,5,2,1,2,3,2,7]
+t
+lessOne = map(lambda ele : ele-1, t)
+lessOne
+for ele in lessOne:
+	print(ele)
+odd = map(lambda ele : ele % 2 !=0 and ele > 3, t)
+for ele in odd:
+	print(ele)
+odd = filter(lambda ele : ele % 2 !=0 and ele > 3, t)
+for ele in odd:
+	print(ele)
+odd
+r1
+exit()
+r1 = sc.parallelize([5,6,3,4,110,10,9,6,7,9])
+r1
+r2 = r1.map(lambda ele : ele - 1 )
+r2
+r1.collect()
+r2.collect()
+r1 = sc.parallelize([5,6,3,4,1,10,10,9,6,7,9])
+r2 = r1.map(lambda ele : ele - 1 )
+r1.collect()
+r2.collect()
+r3 = r1.filter(lambda ele : ele == 10)
+r3.collect
+r3.collect()
+r4 = r1.filter(lambda ele : ele % 2 == 0)
+r4.collect()
+r3.count()
+r1.count()
+lines = ['cat mat rat sat','cat mat sunday monday','python mat sat scala java']
+r5 = sc.parallelize(lines)
+r5
+r5.collect()
+r6 = r5.map(lambda line : line.split(' '))
+r6.collect()
+r7 = r5.flatmap(lambda line : line.split(' '))
+r7 = r5.flatMap(lambda line : line.split(' '))
+r7.collect()
+r1 = sc.parallelize([1,3,5,10,4])
+r2 = sc.parallelize([3,5,5,8])
+r3 = r1.union(r2)
+r3.collect()
+r4 = r1.intersection(r2)
+r4.collect()
+r5 = r1.subtract(r2)
+r5.collect()
+i1 = sc.parallelize(['beer','sprite','milk','soda'])
+l2 = sc.parallelize(['maggie','nuggets','pampers'])
+i3 = i1.cartesian(i2)
+i2 = sc.parallelize(['maggie','nuggets','pampers'])
+i3 = i1.cartesian(i2)
+i3.collect()
+r4 = r3.distinct()
+r4.collect()
+r1.mean()
+r4.max()
+r4.min()
+cbv = r2.countByValue()
+cbv
+records = [(1900,34),(1900,30),(1901,45),(1901,23),(1901,32),(1901.21)]
+recRdd = sc.parallelize(records) 
+recRdd
+rec
+recRdd.keys()
+years = recRdd.keys()
+years
+years.collect()
+years = recRdd.keys()
+years
+years.collect()
+recRdd.value()
+recRdd.values()
+temps = recRdd.values()
+temps.collect()
+recRdd.collect()
+recRdd = [(1900, 34), (1900, 30), (1901, 45), (1901, 23), (1901, 32), 1901.21]
+recRdd = [(1900, 34), (1900, 30), (1901, 45), (1901, 23), (1901, 32), (1901.21)]
+recRdd.collect()
+records = [(1900, 34), (1900, 30), (1901, 45), (1901, 23), (1901, 32), (1901.21)]
+recRdd = sc.parallelize(records)
+recRdd.collect()
+records = [(1900, 34), (1900, 30), (1901, 45), (1901, 23), (1901, 32), (1901,21)]
+recRdd = sc.parallelize(records)
+recRdd.collect()
+years = recRdd.keys()
+years
+years.collect()
+temps = recRdd.values()
+temps.collect()
+temps   = temps.map(lambda ele : ele -1)
+temps
+temps.collect()
+recRdd
+recRdd.collect()
+recRdd.map(lambda ele: ele -1, )
+
+recRdd.map(lambda ele: (ele[0],ele[1] - 1) )
+recRdd.collect
+recRdd.collect()
+deductedTemps = recRdd.map(lambda ele: (ele[0], ele[1]-1) )
+deductedTemps
+deductedTemps.collect()
+deductedTemps = recRdd.mapValues(lambda temp : temp - 1).collect()
+recRdd.mapValues(lambda temp : temp - 1).collect()
+
+deductedTemps = recRdd.mapValues(lambda temp : temp - 1)
+deductedTemps
+deductedTemps.countByKey()
+deductedTemps.countByValue()
+deductedTemps.distinct()
+deductedTemps.distinct().collect()
+deductedTemps.values().countByValue()
+deductedTemps.map(lambda entry: (entry[1], entry[0])).countByKeys()
+deductedTemps.map(lambda entry: (entry[1], entry[0])).countByKeys
+deductedTemps.map(lambda entry: (entry[1], entry[0])).countByKey()
+import readline
+readline.write_history_file("/home/sejal/Desktop/Datascience/spark_inclass")

@@ -1,0 +1,86 @@
+sudo gedit ~/.bashrc
+
+export HADOOP_HOME=/home/sejal/Documents/datascience/hadoop-2.7.6
+export PIG_HOME=/home/sejal/Documents/datascience/pig-0.17.0
+export PATH=$PATH:$PIG_HOME/bin 
+
+  470  source ~/.bashrc
+  471  echo $HADOOP_PATH
+  472  echo $HADOOP_HOME
+  473  echo $PIG_HOME
+  474  history
+
+
+Start pig, enter grunt shell
+pig -x local
+
+
+
+records = load '/home/sejal/Documents/datascience/dataset/data/weather_data';
+dump records
+
+
+Load with Seperate as pipe:
+load '/home/sejal/Documents/datascience/dataset/data/weather_data'
+>> using PigStorage('|');
+
+PigStorage is BIF..
+
+Load as schema:
+records = load '/home/sejal/Documents/datascience/dataset/data/weather_data'
+using PigStorage('|')
+as (station:int,year:int,datemonth,hourminute,temprature:float);
+
+as colname:datatype
+
+
+Filter all tuples of this bag where temprature is not null:
+f = filter records by temprature is not null;
+dump f
+
+Fetch only year and temprature:
+p = foreach f generate year,temprature;
+
+Group by year:
+g = group p by year;
+
+Get max temprature:
+ans = foreach g generate group,MAX(p.temprature);
+
+Save output into file:
+store ans into '/tmp/output/pig';
+
+Save all code to file, then execute below command:
+pig -x local -f max_temp_yearly.pig 
+
+Execute by passing path at runtime:
+pig -x local -f max_temp_yearly.pig -param input=/home/sejal/Documents/datascience/dataset/data/weather_data -param output=/tmp/output/pig
+
+
+Create new file for params and pass file path while execution:
+pig -x local -f max_temp_yearly.pig -param_file max_temp_yearly_params
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

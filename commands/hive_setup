@@ -1,0 +1,187 @@
+
+copy hive to folder and unzip
+
+	gedit .bashrc
+
+export HIVE_HOME=/home/sejal/Documents/datascience/apache-hive-2.3.3-bin
+export PATH=$PATH:$HIVE_HOME/bin
+export HADOOP_USER_CLASSPATH_FIRST=true
+
+  495  source .bashrc
+  496  echo $HIVE_HOME
+
+Create new HIVE folder(/home/sejal/Documents/datascience/HIVE):, in that run below command:
+	schematool -dbType derby -initSchema
+
+create folder standalone
+under that create new file hive-site.xml
+(Check file for its content)
+
+gedit ~/.bashrc
+export HIVE_CONF_DIR=/home/sejal/Documents/datascience/HIVE/standalone
+
+Goto HIVE folder
+write command hive
+it enter hive shell prompt
+
+hive> create database weather;
+hive> use weather;
+
+hive> create table sensor_readings(
+station_no int,year int, datemonth string, hourminute string, temprature float)
+row format delimited
+fields terminated by '|'
+lines terminated by '\n';
+
+
+hive> load data local inpath '/home/sejal/Documents/datascience/dataset/data/weather_data' into table sensor_readings;	
+
+hive> select year, temprature from sensor_readings
+
+hive> select year, MAX(temprature) from sensor_readings where temprature is not null group by station_no, year;
+
+select station_no,year,MAX(temprature) from sensor_readings where temprature is not null group by station_no,year;
+
+Writing analysis for query into file:
+hive> insert overwrite directory '/tmp/weather/hive' select station_no,year,MAX(temprature) from sensor_readings where temprature is not null group by station_no,year;
+
+
+Copy queries into file, HIVE scripts file, the extension is .q
+Create file with query
+goto hive folder
+
+sejal@Sejal-PC:~/Documents/datascience/HIVE$ hive -f hive-scripts/max-temp-yearly.q 
+
+
+/home/sejal/Documents/datascience/dataset/data
+
+create table m(r int, c int, v int
+)
+row format delimited
+fields terminated by ','
+lines terminated by '\n';
+
+
+
+load data local inpath '/home/sejal/Documents/datascience/dataset/data/matrix/m.txt' into table m;
+load data local inpath '/home/sejal/Documents/datascience/dataset/data/matrix/n.txt' into table n;
+
+
+select temp.r,temp.c, SUM(temp.v) from
+(select m.r as r, n.c as c, (m.v*n.v) as v
+from m, n
+where m.c = n.r
+) temp
+group by temp.r,temp.c;
+
+
+
+create table users(id int, username string, address string,gender char(1)
+)
+row format delimited
+fields terminated by ','
+lines terminated by '\n';
+
+load data local inpath '/home/sejal/Documents/datascience/dataset/data/userComments/users.txt' into table users;
+
+
+create table comments(userid int, comment_desc string, comment_date date,likes string)
+row format delimited
+fields terminated by ','
+lines terminated by '\n'
+stored as textfile;-+
+
+load data local inpath '/home/sejal/Documents/datascience/dataset/data/userComments/comments.txt' into table comments;
+
+
+
+create table books(line string)
+row format delimited
+lines terminated by '\n'
+stored as textfile;
+
+load data local inpath '/home/sejal/Documents/datascience/dataset/data/words/text_data.txt' into table books;
+
+/*********************Store data in array format******************************/
+create table comments_splited(
+userid bigint, comment_desc string, comment_date date, likes array<bigint>)
+row format delimited
+fields terminated by ','
+collection items terminated by '|'
+lines terminated by '\n'
+stored as textfile;
+
+load data local inpath '/home/sejal/Documents/datascience/dataset/data/userComments/comments.txt' into table comments_splited;
+
+/***************MOVIE DATABASE***********************/
+Create database movielens;
+user movielens;
+create table users(
+userid bigint, gender char(1), age int, occupation int, zipcode string
+)
+ROW FORMAT SERDE 'org.apache.hadoop.hive.contrib.serde2.MultiDelimitSerDe'
+WITH SERDEPROPERTIES("field.delim"="::")
+stored as textfile;
+
+load data local inpath '/home/sejal/Documents/datascience/dataset/data/movielens/users.dat' into table users;
+
+create table movies(
+movieid bigint, title string,genre array<string>)
+ROW FORMAT SERDE 'org.apache.hadoop.hive.contrib.serde2.MultiDelimitSerDe'
+WITH SERDEPROPERTIES("field.delim"="::","collection.delim"="|")
+stored as textfile;
+
+load data local inpath '/home/sejal/Documents/datascience/dataset/data/movielens/movies.dat' into table movies;
+
+
+create table ratings(
+userid bigint, movieid bigint, rating int,rating_time bigint)
+ROW FORMAT SERDE 'org.apache.hadoop.hive.contrib.serde2.MultiDelimitSerDe'
+WITH SERDEPROPERTIES("field.delim"="::")
+stored as textfile;
+
+load data local inpath '/home/sejal/Documents/datascience/dataset/data/movielens/ratings.dat' into table ratings;
+
+
+//GET NAME OF MOST RATED MOVIE TITLE
+select m.title
+from movies m,
+(select r.movieid as id, COUNT(r.movieid) as no_ratings
+from ratings r
+group by movieid
+having no_ratings > 500
+order by no_ratings desc
+limit 20) temp
+where temp.id = m.movieid;
+
+
+//GET MALE AND FEMALE RATINGS (NEED TO WRITE QUERY)
+select u.gender
+from movies m,
+(select r.movieid as id, COUNT(r.movieid) as no_ratings
+from ratings r
+group by movieid
+having no_ratings > 500
+order by no_ratings desc
+limit 20) temp
+where temp.id = m.movieid;
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
