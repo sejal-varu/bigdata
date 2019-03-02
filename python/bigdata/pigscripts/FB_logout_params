@@ -1,0 +1,2 @@
+input=/home/sejal/Documents/datascience/dataset/data/facebook_logs/
+output=/tmp/output/pig/FB

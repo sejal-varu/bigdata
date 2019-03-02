@@ -1,0 +1,5 @@
+100,Amazing Spiderman or rather HadoopMan,2015-12-01,100|102|103
+100,Welcome spiderman to the field of Big data Analytics,2015-12-02,102
+102,Can you please train me in hadoop,2015-12-01,100
+103,Nothing great I know Spark!,2015-11-06,100|101|102
+100,Keep It up!,2015-11-05

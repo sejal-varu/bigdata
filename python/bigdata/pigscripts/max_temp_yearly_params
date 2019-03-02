@@ -1,0 +1,2 @@
+input=/home/sejal/Documents/datascience/dataset/data/weather_data
+output=/tmp/output/pig
